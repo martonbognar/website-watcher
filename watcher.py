@@ -4,7 +4,7 @@ from checker import Checker
 from website import Website
 
 
-READER = csv.reader(open('sites.csv'), delimiter=' ')
+READER = csv.reader(open('sites.tsv'), delimiter=' ')
 
 CHECKER = Checker()
 
