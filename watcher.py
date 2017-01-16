@@ -1,9 +1,14 @@
 import csv
-import requests
+
+from checker import Checker
+from website import Website
+
 
 READER = csv.reader(open('sites.csv'), delimiter=' ')
 
-SITES = []
+CHECKER = Checker()
 
 for entry in READER:
-    SITES.append({'url': entry[0], 'period': int(entry[1])})
+    CHECKER.add_site(Website(entry[0], int(entry[1])))
+
+CHECKER.run()
