@@ -14,7 +14,6 @@ class Checker(object):
         self.sites.remove(site)
 
     def check_sites(self):
-        print("Checking")
         for site in self.sites:
             if self.iteration % site.get_period() == 0:
                 site.check_update()

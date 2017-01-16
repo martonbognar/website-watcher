@@ -10,6 +10,6 @@ next(READER)
 CHECKER = Checker()
 
 for entry in READER:
-    CHECKER.add_site(Website(entry[0], int(entry[1])))
+    CHECKER.add_site(Website(url=entry[0], period=int(entry[1])))
 
 CHECKER.run()
