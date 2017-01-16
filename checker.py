@@ -1,4 +1,5 @@
 from threading import Timer
+import time
 
 
 class Checker(object):
@@ -16,7 +17,8 @@ class Checker(object):
     def check_sites(self):
         for site in self.sites:
             if self.iteration % site.get_period() == 0:
-                site.check_update()
+                if site.check_update() and self.iteration != 0:
+                    print(time.strftime("%H:%M"), site.get_url(), "has changed!")
         self.iteration += 1
 
     def run(self):

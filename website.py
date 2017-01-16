@@ -12,6 +12,9 @@ class Website(object):
     def get_period(self):
         return self.period
 
+    def get_url(self):
+        return self.url
+
     def set_hashcode(self, hashcode):
         self.hashcode = hashcode
 
@@ -20,4 +23,6 @@ class Website(object):
         currenthash = hashlib.sha256(request.text.encode('utf-8')).hexdigest()
         if currenthash != self.hashcode:
             self.hashcode = currenthash
-            print(self.url, "has changed!")
+            return True
+        else:
+            return False
