@@ -5,6 +5,7 @@ from website import Website
 
 
 READER = csv.reader(open('sites.tsv'), delimiter='\t')
+next(READER)
 
 CHECKER = Checker()
 
