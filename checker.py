@@ -2,11 +2,12 @@ from threading import Timer
 import time
 
 
-class Checker(object):
+class Checker:
 
     def __init__(self):
         self.sites = []
         self.iteration = 0
+        self.timer = None
 
     def add_site(self, site):
         self.sites.append(site)
@@ -22,6 +23,6 @@ class Checker(object):
         self.iteration += 1
 
     def run(self):
-        t = Timer(60.0, self.run)
-        t.start()
+        self.timer = Timer(10.0, self.run)
+        self.timer.start()
         self.check_sites()

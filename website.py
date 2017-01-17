@@ -2,7 +2,7 @@ import requests
 import hashlib
 
 
-class Website(object):
+class Website:
 
     def __init__(self, url, period):
         self.url = url
@@ -19,7 +19,11 @@ class Website(object):
         self.hashcode = hashcode
 
     def check_update(self):
-        request = requests.get(self.url)
+        try:
+            request = requests.get(self.url)
+        except requests.exceptions.RequestException as exc:
+            print("Could not connect to", self.url)
+            return False
         currenthash = hashlib.sha256(request.text.encode('utf-8')).hexdigest()
         if currenthash != self.hashcode:
             self.hashcode = currenthash
